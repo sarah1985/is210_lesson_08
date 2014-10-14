@@ -509,7 +509,7 @@ Examples
     [('Ke1', 'Ke2', 1413252817.89340)]
     >>> len(match)
     1
-    >>> match.reset
+    >>> match.reset()
     >>> len(match)
     0
     >>> len(match.pieces)
