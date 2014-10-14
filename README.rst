@@ -411,7 +411,7 @@ Specifications
 
 #.  Create a constructor that takes one argument, ``pieces``, a dictionary of
     pieces keyed by their positions on the board. The default of the ``pieces``
-    argument is ``None``. If ``pieces`` is ``None`` call the ``reset_match()``
+    argument is ``None``. If ``pieces`` is ``None`` call the ``reset()``
     method.
     
     If ``pieces`` is not ``None``:
