@@ -465,8 +465,7 @@ Specifications
         the ``prefix`` attribute of your pieces which can be used to
         reconstruct the new destination coordinate.
 
-    #.  If a piece does not exist or is unable to move to the coordinate,
-        returns ``False``
+    #.  If a piece is unable to move to the coordinate, it returns ``False``
 
 #.  Implement a Python magic method that will allow the ``ChessMatch`` class
     to be called inside ``len()`` and return the number of log items. See
