@@ -26,8 +26,6 @@ class Car(object):
             tire_list.append(Tire())
             self.tires = tire_list
 
-
-
 class Tire(object):
     """A round rubber thing.
 
