@@ -8,9 +8,10 @@ import time
 class ChessPiece(object):
     """chess piece class"""
 
-    prefix = ""
+
 
     def __init__(self, position):
+        self.prefix = ""
         self.position = position
         self.moves = []
         if not self.is_legal_move(position):
@@ -48,7 +49,7 @@ class ChessPiece(object):
 
         if self.is_legal_move(position):
 
-            current_move = (ChessPiece.prefix + self.position, ChessPiece.prefix + position, time.time)
+            current_move = (self.prefix + self.position, self.prefix + position, time.time)
             self.moves.append(current_move)
             self.position = position
             return current_move
