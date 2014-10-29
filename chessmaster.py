@@ -4,6 +4,7 @@
 
 import time
 
+
 class ChessPiece(object):
     """chess piece class"""
 
@@ -12,7 +13,7 @@ class ChessPiece(object):
     def __init__(self, position):
         self.position = position
         self.moves = []
-        if not self.is_legal_move(position):
+        if not self.is_legal_move():
             excep = '`{}` is not a legal start position'
             raise ValueError(excep.format(position))
 
@@ -21,33 +22,46 @@ class ChessPiece(object):
 
         coordinate = list(tile)
         conversion_dict = {
-            'a': 1,
-            'b': 2,
-            'c': 3,
-            'd': 4,
-            'e': 5,
-            'f': 6,
-            'g': 7,
-            'h': 8,
+            'a': 0,
+            'b': 1,
+            'c': 2,
+            'd': 3,
+            'e': 4,
+            'f': 5,
+            'g': 6,
+            'h': 7,
         }
         x = conversion_dict.get(coordinate[0])
-        y = int(coordinate[1])
+        y = int(coordinate[1]) - 1
         position = (x, y)
         if x is None or y > 8:
             position = None
 
         return position
 
-    def is_legal_move(self, position):
+    def is_legal_move(position):
         """is move legal"""
         return self.algebraic_to_numeric(position) is not None
 
     def move(self, position):
         """move chesspiece"""
 
-        if self.is_legal_move(self, position):
+        if self.is_legal_move():
 
             current_move = (self.position, position, time.time)
             self.moves.append(current_move)
             self.position = position
-        return current_move
+            return current_move
+
+
+class Rook(object):
+    """rook chesspiece"""
+
+
+class Bishop(object):
+    """bishop chesspiece"""
+
+
+
+class King(object):
+    """king chesspiece"""
