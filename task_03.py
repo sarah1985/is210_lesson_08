@@ -4,6 +4,7 @@
 
 import time
 
+
 class Snapshot(object):
     """
     creating unix timestamp
