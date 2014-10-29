@@ -48,10 +48,13 @@ class ChessPiece(object):
 
         if self.is_legal_move():
 
-            current_move = (self.position, position, time.time)
+            current_move = (ChessPiece.prefix + self.position, ChessPiece.prefix + position, time.time)
             self.moves.append(current_move)
             self.position = position
             return current_move
+
+        else:
+            return False
 
 
 class Rook(object):
