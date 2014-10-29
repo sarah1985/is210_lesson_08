@@ -4,6 +4,8 @@
 
 
 class Car(object):
+
+    
     """A moving vehicle definition.
 
     Args:
@@ -27,6 +29,8 @@ class Car(object):
             self.tires = tire_list
 
 class Tire(object):
+
+
     """A round rubber thing.
 
     Args:
@@ -48,6 +52,7 @@ class Tire(object):
         self.miles += miles
 
     def get_maximum_miles(self):
+        """get max miles"""
         return self.__maximum_miles
 
 CAR_TEST = Car()
