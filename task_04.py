@@ -4,6 +4,7 @@
 
 import task_02
 
+
 class Tigerpaw(task_02.Tire):
     """override maximum miles"""
 
