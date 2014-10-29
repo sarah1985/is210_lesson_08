@@ -46,7 +46,7 @@ class ChessPiece(object):
     def move(self, position):
         """move chesspiece"""
 
-        if self.is_legal_move():
+        if self.is_legal_move(position):
 
             current_move = (ChessPiece.prefix + self.position, ChessPiece.prefix + position, time.time)
             self.moves.append(current_move)
