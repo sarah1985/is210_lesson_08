@@ -34,7 +34,7 @@ class ChessPiece(object):
         x = conversion_dict.get(coordinate[0])
         y = int(coordinate[1]) - 1
         position = (x, y)
-        if x is None or y > 8:
+        if x is None or y > 7:
             position = None
 
         return position
@@ -68,3 +68,10 @@ class Bishop(object):
 
 class King(object):
     """king chesspiece"""
+
+
+
+
+
+if __name__ == "__main__":
+    cp = ChessPiece('a9')
