@@ -8,8 +8,16 @@ class Tigerpaw(task_02.Tire):
     """override maximum miles"""
 
     def __init__(self, miles=0):
+        super(Tigerpaw, self).__init__()
         self.miles = miles
         self.__maximum_miles = 750
 
-CAR_TEST = task_02.Car()
-print CAR_TEST.tires
+    def get_maximum_miles(self):
+        return self.__maximum_miles
+
+if __name__ == "__main__":
+    TEST = Tigerpaw()
+    print TEST.get_maximum_miles()
+
+    TEST2 = task_02.Tire()
+    print TEST2.get_maximum_miles()

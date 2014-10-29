@@ -47,6 +47,8 @@ class Tire(object):
         """
         self.miles += miles
 
+    def get_maximum_miles(self):
+        return self.__maximum_miles
 
 CAR_TEST = Car()
 print CAR_TEST.tires
