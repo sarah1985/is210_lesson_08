@@ -39,7 +39,7 @@ class ChessPiece(object):
 
         return position
 
-    def is_legal_move(position):
+    def is_legal_move(self, position):
         """is move legal"""
         return self.algebraic_to_numeric(position) is not None
 
