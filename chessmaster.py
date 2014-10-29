@@ -13,7 +13,7 @@ class ChessPiece(object):
     def __init__(self, position):
         self.position = position
         self.moves = []
-        if not self.is_legal_move():
+        if not self.is_legal_move(position):
             excep = '`{}` is not a legal start position'
             raise ValueError(excep.format(position))
 
