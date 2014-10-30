@@ -6,103 +6,95 @@ import time
 
 
 class ChessPiece(object):
-    """chess piece class"""
+     """chess piece class"""
 
-    prefix = ""
-    moves = []
+     prefix = ''
+     moves = []
 
-    def __init__(self, position):
-        self.position = position
-        if not self.is_on_board(position):
-            excep = '`{}` is not a legal start position'
-            raise ValueError(excep.format(position))
+     def __init__(self, position):
 
-    def algebraic_to_numeric(self, tile):
-        """convert position to ordered pair and vice versa"""
+         if not ChessPiece.is_legal_move(self, position):
+             excep = '`{}` is not a legal start position'
+             raise ValueError(excep.format(position))
 
-        conversion_dict = {
-            'a': 0,
-            'b': 1,
-            'c': 2,
-            'd': 3,
-            'e': 4,
-            'f': 5,
-            'g': 6,
-            'h': 7,
-        }
-        x = conversion_dict.get(tile[0])
-        y = int(tile[1]) - 1
-        position = (x, y)
-        if x is None or y > 7:
-            position = None
-
-        return position
-
-    def is_legal_move(self, position):
-        """is move legal"""
-
-        return self.algebraic_to_numeric(position) is not None
-
-    def move(self, position):
-        """move chesspiece"""
-
-        if self.is_legal_move(position):
-
-            current_move = (
-                self.prefix + self.position,
-                self.prefix + position,
-                time.time()
-            )
-            moves.append(current_move)
-            self.position = position
-            return current_move
-
-        else:
-            return False
-
-    def is_on_board(self, position):
-        """is piece on board"""
-
-        numeric = self.algebraic_to_numeric(position)
-        return True if numeric is not None else False
-
-class Rook(ChessPiece):
-    """rook chesspiece"""
-
-    def __init__(self):
-        super(ChessPiece, self).__init__()
-        self.prefix = "R"
-    def is_legal_move(self, position):
-        if super
+         self.position = position
 
 
-class Bishop(ChessPiece):
-    """bishop chesspiece"""
+     def algebraic_to_numeric(self, tile):
+         """convert position to ordered pair and vice versa"""
 
-    def __init__(self):
-        super(ChessPiece, self).__init__()
-        self.prefix = "B"
+         coordinate = list(tile)
+         conversion_dict = {
+             'a': 0,
+             'b': 1,
+             'c': 2,
+             'd': 3,
+             'e': 4,
+             'f': 5,
+             'g': 6,
+             'h': 7,
+         }
+         x = conversion_dict.get(coordinate[0])
+         y = int(coordinate[1]) - 1
+         position = (x, y)
+         if x is None or y > 7:
+             position = None
 
-class King(ChessPiece):
-    """king chesspiece"""
+         print position
+         return position
 
-    def __init__(self):
-        super(ChessPiece, self).__init__()
-        self.prefix = "K"
+     def is_legal_move(self, position):
+         """is move legal"""
+         numeric = self.algebraic_to_numeric(position)
+         # return self.algebraic_to_numeric(position) is not None
+         return True if numeric is not None else False
+
+     def move(self, position):
+         """move chesspiece"""
+
+         if self.is_legal_move(position):
+
+             current_move = (
+                 self.prefix + self.position,
+                 self.prefix + position, time.time()
+             )
+             self.moves.append(current_move)
+             self.position = position
+             return current_move
+
+         else:
+             return False
 
 
+ class Rook(ChessPiece):
+     """rook chesspiece"""
+
+     prefix = 'R'
+
+     def is_legal_move(self, position):
+         """
+         :param position:
+         :return:
+         """
+
+         newpos = self.algebraic_to_numeric(position)
+         retval = None
+         if newpos is not None:
+             curpos = self.algebraic_to_numeric(self.position)
+             sameaxis = curpos[0] == newpos[0] or curpos[1] == newpos[1]
+             if sameaxis and not curpos == newpos:
+                 retval = True
+         return retval
 
 
-
-class ChessMatch(object):
-    """game board and track match"""
-
-    def __init__(self, pieces=None):
-        if pieces:
-            self.reset(pieces)
+ class Bishop(object):
+     """bishop chesspiece"""
 
 
+ class King(object):
+     """king chesspiece"""
 
 
-if __name__ == "__main__":
-    cp = ChessPiece('a9')
+ if __name__ == "__main__":
+
+     rook = Rook('a1')
