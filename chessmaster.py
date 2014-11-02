@@ -19,7 +19,6 @@ class ChessPiece(object):
 
         self.position = position
 
-
     def algebraic_to_numeric(self, tile):
         """convert position to ordered pair and vice versa"""
 
@@ -34,10 +33,10 @@ class ChessPiece(object):
             'g': 6,
             'h': 7,
         }
-        x = conversion_dict.get(coordinate[0])
-        y = int(coordinate[1]) - 1
-        position = (x, y)
-        if x is None or y > 7:
+        x_axis = conversion_dict.get(coordinate[0])
+        y_axis = int(coordinate[1]) - 1
+        position = (x_axis, y_axis)
+        if x_axis is None or y_axis > 7:
             position = None
 
         print position
@@ -123,7 +122,7 @@ class King(ChessPiece):
         if newpos is not None:
             curpos = self.algebraic_to_numeric(self.position)
             if abs(curpos[0] - newpos[0]) == 0 or 1 and \
-                            abs(curpos[1] - newpos[1]) == 0 or 1:
+                abs(curpos[1] - newpos[1]) == 0 or 1:
                 retval = True
         return retval
 
@@ -134,27 +133,28 @@ class ChessMatch(object):
     def __init__(self, pieces=None):
         """catalogs dictionary of pieces"""
 
-        if pieces is None:
-            self.reset()
-        else:
+        if pieces is not None:
             self.pieces = pieces
             self.log = []
+
+        else:
+            self.reset()
 
     def reset(self):
         """reset pieces"""
 
         self.pieces = {
-        'Ra1': Rook('a1'),
-        'Rh1': Rook('h1'),
-        'Ra8': Rook('a8'),
-        'Rh8': Rook('h8'),
-        'Bc1': Bishop('c1'),
-        'Bf1': Bishop('f1'),
-        'Bc8': Bishop('c8'),
-        'Bf8': Bishop('f8'),
-        'Ke1': King('e1'),
-        'Ke8': King('e8')
-    }
+            'Ra1': Rook('a1'),
+            'Rh1': Rook('h1'),
+            'Ra8': Rook('a8'),
+            'Rh8': Rook('h8'),
+            'Bc1': Bishop('c1'),
+            'Bf1': Bishop('f1'),
+            'Bc8': Bishop('c8'),
+            'Bf8': Bishop('f8'),
+            'Ke1': King('e1'),
+            'Ke8': King('e8')
+            }
 
     def move(self, full_notation, newpos):
         """stores moves"""
