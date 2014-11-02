@@ -122,7 +122,7 @@ class King(ChessPiece):
         if newpos is not None:
             curpos = self.algebraic_to_numeric(self.position)
             if abs(curpos[0] - newpos[0]) == 0 or 1 and \
-                abs(curpos[1] - newpos[1]) == 0 or 1:
+                    abs(curpos[1] - newpos[1]) == 0 or 1:
                 retval = True
         return retval
 
@@ -170,7 +170,3 @@ class ChessMatch(object):
         """length of log"""
 
         return len(self.log)
-
-
-if __name__ == "__main__":
-    rook = Rook('a1')
