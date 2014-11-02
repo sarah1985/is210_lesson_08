@@ -161,7 +161,8 @@ class ChessMatch(object):
 
         new_move = self.pieces[full_notation].move(newpos)
         if new_move:
-            self.log.append()
+            self.log.append(new_move)
+            prefix = full_notation[0]
             self.pieces[prefix + newpos] = self.pieces.pop(full_notation)
         else:
             return False
