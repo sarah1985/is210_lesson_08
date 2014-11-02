@@ -87,7 +87,7 @@ class Rook(ChessPiece):
         return retval
 
 
-class Bishop(object):
+class Bishop(ChessPiece):
     """bishop chesspiece"""
 
     prefix = 'B'
@@ -107,7 +107,7 @@ class Bishop(object):
         return retval
 
 
-class King(object):
+class King(ChessPiece):
     """king chesspiece"""
 
     prefix = 'K'
@@ -126,6 +126,50 @@ class King(object):
                             abs(curpos[1] - newpos[1]) == 0 or 1:
                 retval = True
         return retval
+
+
+class ChessMatch(object):
+    """logs chess match"""
+
+    def __init__(self, pieces=None):
+        """catalogs dictionary of pieces"""
+
+        if pieces is None:
+            self.reset()
+        else:
+            self.pieces = pieces
+            self.log = []
+
+    def reset(self):
+        """reset pieces"""
+
+        self.pieces = {
+        'Ra1': Rook('a1'),
+        'Rh1': Rook('h1'),
+        'Ra8': Rook('a8'),
+        'Rh8': Rook('h8'),
+        'Bc1': Bishop('c1'),
+        'Bf1': Bishop('f1'),
+        'Bc8': Bishop('c8'),
+        'Bf8': Bishop('f8'),
+        'Ke1': King('e1'),
+        'Ke8': King('e8')
+    }
+
+    def move(self, full_notation, newpos):
+        """stores moves"""
+
+        new_move = self.pieces[full_notation].move(newpos)
+        if new_move:
+            self.log.append()
+            self.pieces[prefix + newpos] = self.pieces.pop(full_notation)
+        else:
+            return False
+
+    def __len__(self):
+        """length of log"""
+
+        return len(self.log)
 
 
 if __name__ == "__main__":
