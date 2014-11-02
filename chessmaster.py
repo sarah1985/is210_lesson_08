@@ -130,12 +130,12 @@ class King(ChessPiece):
 class ChessMatch(object):
     """logs chess match"""
 
+    log = []
     def __init__(self, pieces=None):
         """catalogs dictionary of pieces"""
 
         if pieces is not None:
             self.pieces = pieces
-            self.log = []
 
         else:
             self.reset()
